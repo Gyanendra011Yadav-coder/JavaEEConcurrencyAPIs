@@ -1,0 +1,1 @@
+Account Number:102Account_Type:creditTxn_Id2Amount:2000.0Transaction_Date:Sun Jan 02 00:00:00 IST 2022

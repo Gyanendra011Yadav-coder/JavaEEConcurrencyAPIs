@@ -32,7 +32,7 @@ public class BankAccountDao {
 
         Statement statement= connectionObj.createStatement();
 
-        ResultSet set = statement.executeQuery("select * from BankAccount");
+        ResultSet set = statement.executeQuery("select * from bankaccount");
 
         while(set.next()) {
             account=new BankAccount();

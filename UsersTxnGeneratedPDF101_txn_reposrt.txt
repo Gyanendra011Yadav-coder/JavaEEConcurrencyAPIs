@@ -1,0 +1,1 @@
+Account Number:101Account_Type:debitTxn_Id1Amount:1000.0Transaction_Date:Sat Jan 01 00:00:00 IST 2022

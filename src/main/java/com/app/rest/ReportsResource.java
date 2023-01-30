@@ -13,6 +13,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import java.beans.PropertyVetoException;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -22,7 +23,7 @@ import java.util.concurrent.Future;
  * on 2023-01-27,Jan,2023
  * in Project: JavaEEConcurrency
  */
-@Path("/reports")
+@Path("reports")
 public class ReportsResource {
 
     private BankAccountDao bankAccountDao;
@@ -51,7 +52,16 @@ public class ReportsResource {
     public String generateReports() throws SQLException, ExecutionException, InterruptedException {
         List<BankAccount> bankAccountList=bankAccountDao.getAllBankAccounts();
 
+        for(int i=0;i<bankAccountList.size();i++){
+            System.out.println("Getting bank account..." +i+")"+bankAccountList.get(i).getAccountNumber());
+            System.out.println(bankAccountList.get(i).getAccountType());
+            System.out.println(bankAccountList.get(i).getAccountUserName());
+            System.out.println(bankAccountList.get(i).getEmail());
+
+        }
+        //System.out.println("Getting bank accounts..."+ Arrays.toString(bankAccountList.toArray()));
         for(BankAccount bankAccount : bankAccountList){
+            System.out.println("Processing for bank account " + bankAccount);
             Future<Boolean> future=executorService.submit(new reportProcessor(bankAccount,bankAccountDao));
 
             System.out.println("Reports generated: " + future.get());
